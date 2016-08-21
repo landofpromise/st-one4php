@@ -1,0 +1,3 @@
+<?php
+	$islocal = false;
+?>

@@ -1,0 +1,152 @@
+$(function() {
+	$('#username').blur(function(){
+		var tip_obj = $("#username_tip");
+		tip_obj.empty();
+		var value = $.trim($('#username').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustGtInput(value, tip_obj, 1))
+			return;
+		if(!mustLtInput(value, tip_obj, 5))
+			return;
+		if(!mustChineseInput(value, tip_obj))
+			return;
+	});
+	$('#muqu').blur(function(){
+		var tip_obj = $("#muqu_tip");
+		tip_obj.empty();
+		var value = $.trim($('#muqu').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustLtInput(value, tip_obj, 20))
+			return;
+	});
+	$('#hometown').blur(function(){
+		var tip_obj = $("#hometown_tip");
+		tip_obj.empty();
+		var value = $.trim($('#hometown').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustLtInput(value, tip_obj, 20))
+			return;
+	});
+	$('#height').blur(function(){
+		var tip_obj = $("#height_tip");
+		tip_obj.empty();
+		var value = $.trim($('#height').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustNumberInput(value, tip_obj))
+			return;
+		if(!mustLtInput(value, tip_obj, 3))
+			return;
+		if(!mustGtInput(value, tip_obj, 1))
+			return;
+	});
+	$('#weight').blur(function(){
+		var tip_obj = $("#weight_tip");
+		tip_obj.empty();
+		var value = $.trim($('#weight').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustNumberInput(value, tip_obj))
+			return;
+		if(!mustLtInput(value, tip_obj, 3))
+			return;
+		if(!mustGtInput(value, tip_obj, 1))
+			return;
+	});
+	$('#phone').blur(function(){
+		var tip_obj = $("#phone_tip");
+		tip_obj.empty();
+		var value = $.trim($('#phone').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustNumberInput(value, tip_obj))
+			return;
+		if(!mustEqInput(value, tip_obj, 11))
+			return;
+	});
+	$('#zz_name').blur(function(){
+		var tip_obj = $("#zz_name_tip");
+		tip_obj.empty();
+		var value = $.trim($('#zz_name').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustGtInput(value, tip_obj, 1))
+			return;
+		if(!mustLtInput(value, tip_obj, 5))
+			return;
+		if(!mustChineseInput(value, tip_obj))
+			return;
+	});
+	$('#zz_phone').blur(function(){
+		var tip_obj = $("#zz_phone_tip");
+		tip_obj.empty();
+		var value = $.trim($('#zz_phone').val());
+		if(!requiredInput(value, tip_obj))
+			return;
+		if(!mustNumberInput(value, tip_obj))
+			return;
+		if(!mustEqInput(value, tip_obj, 11))
+			return;
+	});
+//	$('#is_dzz').blur(muquBlurHandle);
+//	$('#full').blur(muquBlurHandle);
+});
+
+function isChn(str) {
+	var reg = /^[\u4E00-\u9FA5]+$/;
+	
+	return reg.test(str);
+}
+
+function requiredInput(value, tip_obj){
+	if (value == null || value == "") {
+		tip_obj.empty().html('<div class="erro-tips">请输入！</div>');
+		return false;
+	}
+	
+	return true;
+}
+
+function mustNumberInput(value, tip_obj){
+	if (isNaN(value)) {
+		tip_obj.empty().html('<div class="erro-tips">必须输入数字</div>');
+		return false;
+	}
+	return true;
+}
+
+function mustChineseInput(value, tip_obj){
+	if (!isChn(value)) {
+		tip_obj.empty().html('<div class="erro-tips">必须输入中文</div>');
+		return false;
+	}
+	return true;
+}
+
+function mustGtInput(value, tip_obj, number){
+	if (value.length <= number) {
+		tip_obj.empty().html('<div class="erro-tips">输入长度必须大于' + number +'</div>');
+		return false;
+	}
+	return true;
+}
+
+function mustLtInput(value, tip_obj, number){
+	if (value.length > number) {
+		tip_obj.empty().html('<div class="erro-tips">输入长度必须小于' + number +'</div>');
+		return false;
+	}
+	return true;
+}
+
+function mustEqInput(value, tip_obj, number){
+	if (value.length != number) {
+		tip_obj.empty().html('<div class="erro-tips">输入长度必须等于' + number +'</div>');
+		return false;
+	}
+	return true;
+}
+
