@@ -37,7 +37,7 @@ $zyresult = mysql_query($zysql) OR die ("<br/>error:<b>".mysql_error()."</b><br/
 $zyrecords = @mysql_fetch_object($zyresult);
 
 
-$totalzysql = "select count(*) as total_zy from $leadertable where day$day=1 and come =1";
+$totalzysql = "select count(*) as total_zy from $leadertable where come =1";
 $totalzyresult = mysql_query($totalzysql) OR die ("<br/>error:<b>".mysql_error()."</b><br/>产生问题SQL:".$totalzysql);
 $totalzyrecords = @mysql_fetch_object($totalzyresult);
 
